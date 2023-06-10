@@ -1,0 +1,82 @@
+Chapter 6 notes
+
+-Class Object is the ultimate parent of any other class in Java
+-all classes implicitly extends Object
+-multiple inheritance is not allowed in Java, only single inheritance is allowed
+-Superclass - more generic type of class
+-Subclass - more specific, inherits all attributes and behaviors from parent, can also define their own
+-Heap memory stores objects of classes
+
+Product is the Object Reference:
+Product x2 = new Food()
+
+Object Class
+-toString
+-equals
+-hashCode
+-clone
+-wait, notify, notifyAll
+
+Type Casting Rules
+-Casting is required to assign parent to child reference type
+-No casting is required to assign child to parent reference type
+-Casting is not possible between objects of sibling types
+
+Pattern Matching for instanceof
+old way:
+if (obj instanceof String) {
+	String s = (String) obj;
+	//use s
+}
+
+new way:
+if (obj instanceof String s) {
+	//use s
+}
+
+if (obj instanceof String s) {
+	//use s
+} else {
+	//else is out of scope here
+}
+
+Subclass Constructors
+-subclass constructor must invoke the superclass constructor
+-invocation of superclass constructor must be the first line of code in the subclass constructor
+-super(SuperClass) is invoked e 
+-if you add a custom constructor, the no-arg constructor will not be added
+-if no other constructors are present in the class, the no-arg constructor is provided by default
+-Object class provides a no-arg constructor
+
+Overriding Methods
+-subclass can widen, but cannot narrow access of methods it overrides
+-subclass method takes precedence without casting reference to a specific subclass type
+-@Override annotation is optional, ensures method from subclass matches the superclass method
+-the subclass that overrides the parent method without invoking via super reference essentially
+disables the parent method logic
+
+Abstract Classes and Methods
+-encourages class extensibility
+-abstract class cannot be directly instantiated
+-can contain normal variables and methods, which are inherited by its subclasses as usual
+-may contains abstract methods
+-concrete subclasses must override all abstract methods of their abstract parent
+
+Final Classes and Methods
+-limits class extensibility
+-no class can extend a final class, results in compilation error
+-methods marked as final cannot be overridden, results in compilation error
+
+Sealed Classes
+-allows developers to decide how inheritance is implemented
+sealed: class or interface can only be extended, implemented by permitted classes or interfaces
+permits: used to specify which classes or interfaces are allowed to extend or implement
+non-sealed: no restriction on any classes or interfaces for extension
+final: cannot be extended
+-any class that is sealed must define permits
+-any permitted class or interface must either be sealed and permit, final or non-sealed
+-any class not using any of the above will behave as usual
+
+Override: toString
+-it is recommended that all Java classes override some operations defined by the Object class
+-toString method can be easily used in logging
