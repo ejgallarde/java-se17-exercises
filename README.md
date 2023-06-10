@@ -1,1 +1,1 @@
-TODO: Add contents to README
+This project focuses on learnings that are covered on the OCJP Certification Exam.
