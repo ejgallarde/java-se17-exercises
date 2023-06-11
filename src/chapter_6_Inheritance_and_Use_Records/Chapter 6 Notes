@@ -99,4 +99,36 @@ String Objects
 
 Factory Method Pattern
 -design pattern: hides the use of a specific constructor
+-dynamically choose the subtype instance to be created
+-invokers can remain subtype unaware
+-later addition of extra subtypes may not affect such invokers
+
+Records
+-new Java 17 feature, a new kind of class
+-common complaint: "Java is too verbose" or "too much ceremony"
+-some classes are nothing more than immutable data carriers for a handful of values
+-properly writing such a data-carrier class involves a lot of low-value, repetitive,
+error-prone code: constructors, accessors, equals, hashCode, toString, and so on.
+-Records help solve these issues
+-helps to model plain data aggregates with less ceremony
+-a record declaration specifies in a header a description of its contentsl the appropriate
+accessors, constructor, equals, hashCode, and toString methods are created automatically
+	record Point(int x, int y) {... }
+-a record class is implicitly FINAL
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -5,30 +5,30 @@ package labs.pm.data;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDate;
 import java.util.Objects;
-
-import chapter_5_Improved_Class_Design.enums.Workflow;
 
 /**
  * @author ecgallar
  *
  */
-public class Product {
+@SuppressWarnings("preview")
+public sealed class Product permits Food, Drink {
 
-	public Product(int id, String name, BigDecimal price, Rating rating) {
+	 Product(int id, String name, BigDecimal price, Rating rating) {
 		this.id = id;
 		this.name = name;
 		this.price = price;
 		this.rating = rating;
 	}
 
-	public Product(int id, String name, BigDecimal price) {
-		this(id, name, price, Rating.NOT_RATED);
-	}
-
-	public Product() {
-		this(0, "No Name", BigDecimal.ZERO);
-	}
+//	public Product(int id, String name, BigDecimal price) {
+//		this(id, name, price, Rating.NOT_RATED);
+//	}
+//
+//	public Product() {
+//		this(0, "No Name", BigDecimal.ZERO);
+//	}
 
 	private final int id;
 	private final String name;
@@ -42,7 +42,7 @@ public class Product {
 	}
 
 	public Product applyRating(Rating newRating) {
-		return new Product(id, name, price, newRating);
+		return new Product(getId(), getName(), getPrice(), getRating());
 	}
 
 	public int getId() {
@@ -61,33 +61,29 @@ public class Product {
 		return price;
 	}
 
-	public void submitWorkflowExtract(String workflowName) {
-		System.out.println("********************START " + workflowName + " EXTRACT********************");
-		Workflow workflowSchedulerService = Workflow.getWorkflowByName(workflowName);
-		System.out.println(workflowSchedulerService.getName());
-		System.out.println(workflowSchedulerService.getWorkflowSchedulerService());
-	}
-
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", rating=" + rating + "]";
+		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", discount=" + getDiscount() + ", rating=" + rating.getStars();
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, name);
+		return Objects.hash(id);
 	}
 
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Product other = (Product) obj;
-		return id == other.id && Objects.equals(name, other.name);
+		if (obj instanceof Product) {
+			Product other = (Product) obj;
+			return id == other.id && Objects.equals(name, other.name);
+		}
+		return false;
+	}
+	
+	public LocalDate getBestBefore() {
+		return LocalDate.now();
 	}
 
 }
