@@ -18,7 +18,7 @@ public class Shop {
 	public static void main(String[] args) {
 		LocalTime now = LocalTime.now();
 		System.out.println("Local Time Now: " + now);
-		System.out.println(now.isAfter(LocalTime.of(17, 30)) && now.isBefore(LocalTime.of(18, 30)));
+		System.out.println("Happy Hour: " + (now.isAfter(LocalTime.of(17, 30)) && now.isBefore(LocalTime.of(18, 30))));
 
 		ProductManager pm = new ProductManager();
 		Product p1 = pm.createProduct(101, "Tea", BigDecimal.valueOf(1.99), Rating.THREE_STAR);

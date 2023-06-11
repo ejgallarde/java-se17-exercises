@@ -12,7 +12,6 @@ import java.util.Objects;
  * @author ecgallar
  *
  */
-@SuppressWarnings("preview")
 public sealed class Product permits Food, Drink {
 
 	 Product(int id, String name, BigDecimal price, Rating rating) {
@@ -75,9 +74,9 @@ public sealed class Product permits Food, Drink {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj instanceof Product) {
-			Product other = (Product) obj;
-			return id == other.id && Objects.equals(name, other.name);
+		if (obj instanceof Product p) {
+//			Product other = (Product) obj; --- editing with Pattern Matching of Java 17
+			return id == p.id && Objects.equals(name, p.name);
 		}
 		return false;
 	}
