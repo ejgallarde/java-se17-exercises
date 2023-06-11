@@ -1,4 +1,4 @@
-package nonlab.practice;
+package chapter_5_Improved_Class_Design.enums;
 
 public enum DiaperSizes {
 	

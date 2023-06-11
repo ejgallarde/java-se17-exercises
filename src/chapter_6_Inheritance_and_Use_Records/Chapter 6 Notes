@@ -80,3 +80,23 @@ final: cannot be extended
 Override: toString
 -it is recommended that all Java classes override some operations defined by the Object class
 -toString method can be easily used in logging
+
+Override: equals
+-compares objects
+-the == operator compares values in the stack, use to compare primitive values or to determine
+if two references are pointing to the same object.
+
+Override: hashCode
+-generates object identity as an int value
+-hashCode method should return the same int value for any pair of objects that are 
+considered to be the same when compared with the equals method
+-Objects class contains tha hash method that generates a hash code value for a number of objects
+
+String Objects
+-String objects are interned; therefore, multiple references can point to the same String object
+-compare Strings using the equals method (or equalsIgnoreCase)
+-a single copy of a String literal is stored in a String Pool memory area
+
+Factory Method Pattern
+-design pattern: hides the use of a specific constructor
+
