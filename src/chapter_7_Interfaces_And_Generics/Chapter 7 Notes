@@ -1,0 +1,18 @@
+Chapter 7 notes
+
+Interfaces
+-similar to abstract class except that:
+	-methods are implicitly abstract (except default, static, and private methods)
+	-instance methods are by default public and abstract
+	-class implements it
+	-multiple implements is allowed
+	-can contain concrete methods ONLY if they are either default, or private, or static
+-all abstract methods must be implemented by the class
+-cannot be instantiated
+-can contain constant fields, but not variables
+-interfaces can be used as a reference type
+	-if a class implements an interface, the interface can be used as a reference type
+-essential for many design patterns
+-default methods: added to prevent from implementing class to override the method
+-private methods: can only be used by the interface
+-static methods: can be called via InterfaceName.methodName();
