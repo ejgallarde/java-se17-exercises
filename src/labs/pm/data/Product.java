@@ -12,7 +12,7 @@ import java.util.Objects;
  * @author ecgallar
  *
  */
-public sealed class Product permits Food, Drink {
+public sealed class Product implements Rateable<Product> permits Food, Drink {
 
 	 Product(int id, String name, BigDecimal price, Rating rating) {
 		this.id = id;

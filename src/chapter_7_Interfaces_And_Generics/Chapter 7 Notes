@@ -62,4 +62,15 @@ Comparator Interface
 	-create a sorter class that implements the Comparator interface
 	-use it in Arrays.sort(myArray, new MySorter()) as a 2nd parameter
 
+Cloneable Interface
+-a type-marker or tag-interface
+-does not have to define any methods
+-indicates a permission that an object can be cloned
+-cloning an object means creating a replica of the objects memory
+
+Composition Pattern
+-a design pattern
+-interfaces describe capabilities
+-classes implement these capabilities
+-capabilities are aggregated
 
