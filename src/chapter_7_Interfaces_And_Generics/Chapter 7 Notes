@@ -10,9 +10,56 @@ Interfaces
 -all abstract methods must be implemented by the class
 -cannot be instantiated
 -can contain constant fields, but not variables
+-an interface is a type just like a class
+	-can be used in type casting
+	-works with instanceof operator
 -interfaces can be used as a reference type
 	-if a class implements an interface, the interface can be used as a reference type
 -essential for many design patterns
 -default methods: added to prevent from implementing class to override the method
 -private methods: can only be used by the interface
 -static methods: can be called via InterfaceName.methodName();
+-multiple implements is allowed, single inheritance (extends) is allowed
+-interfaces can extend other interfaces, but cannot implement them
+-subclasses that extend a superclass that implements an interface has access to all its
+visible operations (instance, default, and static)
+-the reference declared as interface type enables access only to those operations
+that are described by this interface and its parents
+
+default Methods
+-a superclass method takes priority over an interface default method
+-the superclass method may be concrete or abstract
+-only consider the interface default if no method exists from the superclass
+-a subtype interface's default method takes priority over a super-type interface's default method
+-if there is a conflict, treat the default method as abstract, class must provide implementation
+
+Functional Interfaces
+-defines a single abstract operation (function)
+-does not force you to implement unused abstract methods
+-flexible and recommended approach to designing interfaces
+
+Generics
+-allow the usage of parameterized types in methods, classes, and interfaces
+-provide code reuse where we can write a method/class/interface once and use it with any type
+-provides flexible type safety to your code
+-helps move many common errors from runtime to compile time
+-reduces the need for casting with collections
+-heavily used in the Java Collections API
+-since SE5
+-markers used: T(type), V(value), K(key); you can choose any marker you like
+	-can be a word or a single letter
+-can be used with both classes and interfaces; many existing Java interfaces utilize generics
+
+Comparable Interface
+-defines a single abstract method: int compareTo (T o)
+-returns an int value
+-compares current object (this) with the specified object (parameter) to establish their order
+
+Comparator Interface
+-defines a single abstract method: int compare (T o1, T o2)
+-describes a way of comparing a pair of objects
+-you can create multiple sorters that implement Comparator
+	-create a sorter class that implements the Comparator interface
+	-use it in Arrays.sort(myArray, new MySorter()) as a 2nd parameter
+
+
